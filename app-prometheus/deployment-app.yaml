@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-app
+  namespace: staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-app
+  template:
+    metadata:
+      labels:
+        app: prometheus-app
+    spec:
+      containers:
+      - name: prometheus-app
+        image: ekhari/prom1-monitor:go
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            containerPort: 8080
+          - name: http-metrics 
+            containerPort: 8081
+

@@ -1,0 +1,7 @@
+apiVersion: v1 
+kind: Namespace 
+metadata:
+  name: staging
+  labels:
+    monitoring: prometheus  # we called the namespace that was used for the prometheus operator/prometheus
+    #now its linked
