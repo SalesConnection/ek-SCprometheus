@@ -32,6 +32,17 @@ spec:
         prometheus: main
   alerting:
     alertmanagers:
-      - name: alertmanager-operated
+      - name: alertmanager-main
         namespace: monitoring
         port: web
+        pathPrefix: /
+        scheme: http
+  volumes:
+    - name: grafana-config
+      configMap:
+        name: grafana-config
+  volumeMounts:
+    - name: grafana-config
+      mountPath: /etc/grafana/grafana.ini
+      subPath: grafana.ini
+

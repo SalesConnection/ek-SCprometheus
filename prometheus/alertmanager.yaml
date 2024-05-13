@@ -1,16 +1,8 @@
----
 apiVersion: monitoring.coreos.com/v1
 kind: Alertmanager
 metadata:
+  name: alertmanager-main
   namespace: monitoring
-  name: main
 spec:
   replicas: 1
-  logLevel: debug
-  resources:
-    requests:
-      cpu: 200m
-      memory: 256Mi
-    limits:
-      cpu: 200m
-      memory: 256Mi
+  version: v0.23.0
