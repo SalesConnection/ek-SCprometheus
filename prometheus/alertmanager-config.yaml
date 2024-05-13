@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: monitoring
+  name: alertmanager-main
+type: Opaque
+stringData:
+  alertmanager.yaml: |
+    config:
+      global:
+        resolve_timeout: 5m
+      route:
+        group_by: ['alertname']
+        group_wait: 30s
+        group_interval: 5m
+        repeat_interval: 12h
+        receiver: gmail
+        routes:
+          - receiver: gmail
+            matchers:
+              - alertname =~ "TargetDown|KubeSchedulerDown|Watchdog"
+      receivers:
+        - name: gmail
+          email_configs:
+            - to: eklegend02@gmail.com
+              from: eklegend02@gmail.com
+              smarthost: smtp.gmail.com:587
+              auth_username: eklegend02@gmail.com
+              auth_identity: eklegend02@gmail.com
+              auth_password: klmmedjdwmqtkabs
+              send_resolved: true

@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: monitoring
+data:
+  button-click-alerts.yaml: |
+    groups:
+    - name: button_click_alerts
+      rules:
+      - alert: Button1ClickCountAlert
+        expr: button1_clicks_total > 50
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Button 1 click count exceeded 50"
+
+      - alert: Button2ClickCountAlert
+        expr: button2_clicks_total > 50
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Button 2 click count exceeded 50"
+
+      - alert: Button3ClickCountAlert
+        expr: button3_clicks_total > 50
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Button 3 click count exceeded 50"

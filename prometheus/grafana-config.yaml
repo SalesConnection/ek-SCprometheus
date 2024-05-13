@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: monitoring
+  name: grafana-main
+stringData:
+  grafana.yaml: |
+    grafana:
+      grafana.ini:
+        smtp:
+          enabled: true
+          host: smtp.gmail.com:587
+          user: eklegend02@gmail.com
+          password: klmmedjdwmqtkabs
+          cert_file:
+          key_file:
+          from_address: eklegend02@gmail.com
+          from_name: Grafana
+          skip_verify: false
+          ehlo_identify:
+          startTlS_policy:

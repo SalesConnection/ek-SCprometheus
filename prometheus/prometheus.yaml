@@ -1,3 +1,4 @@
+# trunk-ignore-all(prettier)
 apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 metadata:
@@ -16,19 +17,21 @@ spec:
       prometheus: main
   podMonitorNamespaceSelector:
     matchLabels:
-      monitoring: prometheus # we called this because a namespaceselector is called and we use the namespace.yaml format
+      monitoring: prometheus
+  additionalScrapeConfigs:
+    name: additional-scrape-configs
+    key: prometheus-additional.yaml
   logFormat: logfmt
   logLevel: info
   retention: 7d
+  ruleNamespaceSelector:
+    matchLabels:
+      monitoring: prometheus
+  ruleSelector:
+    matchLabels:
+        prometheus: main
   alerting:
     alertmanagers:
-    - namespace: monitoring
-      name: alertmanager
-      port: web
-      
-  # storage:
-  #   volumeClaimTemplate:
-  #     spec:
-  #       resources:
-  #         requests:
-  #           storage: 1Gi
+      - name: alertmanager-operated
+        namespace: monitoring
+        port: web
