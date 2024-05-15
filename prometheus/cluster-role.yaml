@@ -6,6 +6,8 @@ metadata:
 rules:
 - apiGroups: [""]
   resources:
+  - alertmanager
+  - rules
   - nodes
   - nodes/metrics
   - services

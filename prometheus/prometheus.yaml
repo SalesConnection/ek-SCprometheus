@@ -21,28 +21,25 @@ spec:
   additionalScrapeConfigs:
     name: additional-scrape-configs
     key: prometheus-additional.yaml
-  logFormat: logfmt
-  logLevel: info
-  retention: 7d
   ruleNamespaceSelector:
     matchLabels:
       monitoring: prometheus
   ruleSelector:
     matchLabels:
         prometheus: main
+  logFormat: logfmt
+  logLevel: info
+  retention: 7d
   alerting:
     alertmanagers:
       - name: alertmanager-main
         namespace: monitoring
         port: web
-        pathPrefix: /
-        scheme: http
   volumes:
-    - name: grafana-config
+    - name: grafana
       configMap:
-        name: grafana-config
+        name: grafana
   volumeMounts:
-    - name: grafana-config
+    - name: grafana
       mountPath: /etc/grafana/grafana.ini
       subPath: grafana.ini
-

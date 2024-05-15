@@ -2,20 +2,24 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   namespace: monitoring
-  name: grafana-config
+  name: grafana
   labels:
-    app: my-grafana
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/version: 10.4.1
+    prometheus: main
 data:
   grafana.ini: |
     smtp:
       enabled: true
       host: smtp.gmail.com:587
       user: eklegend02@gmail.com
-      password: klmmedjdwmqtkabs
+      password: apklzfatqlrzctad
       cert_file:
       key_file:
       from_address: eklegend02@gmail.com
       from_name: Grafana
       skip_verify: false
       ehlo_identify:
-      startTlS_policy:
+      smtp_require_tls: false

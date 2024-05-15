@@ -8,6 +8,6 @@ stringData:
     - job_name: "node-exporter"
       static_configs:
         - targets: ["node-exporter-prometheus-node-exporter.monitoring:9100"]
-
+    
 
  #add blackbox here later
