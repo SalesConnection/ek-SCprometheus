@@ -3,23 +3,28 @@ kind: AlertmanagerConfig
 metadata:
   name: alertmanager-config
   namespace: monitoring
-  labels: 
-    alertmanagerConfig: alertmanager
+  labels:
+    prometheus: main
+    alertmanager: alertmanager-config
 spec:
   route:
-    receiver: 'email-alert'
-    groupBy: ['alertname']
+    groupBy:
+      - alertname
     groupWait: 30s
     groupInterval: 5m
     repeatInterval: 12h
+    receiver: "slack-notifications"
+    routes:
+      - receiver: "slack-notifications"
+        match:
+          severity: warning
   receivers:
-    - name: 'email-alert'
-      emailConfigs:
-        - to: 'eklegend02@gmail.com'
-          from: 'eklegend02@gmail.com'
-          smarthost: 'smtp.gmail.com:587'
-          authUsername: 'eklegend02@gmail.com'
-          authPassword:
-            name: alertmanager-smtp-secret
-            key: smtp_auth_password
-          requireTLS: false
+    - name: "slack-notifications"
+      slackConfigs:
+        - channel: "#alerts"
+          sendResolved: true
+          apiURL:
+            key: slack-webhook-url
+            name: "slack-secret"
+          text: "alert has been made"
+#https://hooks.slack.com/services/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

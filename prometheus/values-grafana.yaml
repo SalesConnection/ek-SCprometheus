@@ -1,0 +1,40 @@
+# grafana:
+#   grafana.ini: |
+#     [analytics]
+#     check_for_updates = true
+    
+#     [grafana_net]
+#     url = https://grafana.net
+    
+#     [log]
+#     mode = console
+    
+#     [paths]
+#     data = /var/lib/grafana/
+#     logs = /var/log/grafana
+#     plugins = /var/lib/grafana/plugins
+#     provisioning = /etc/grafana/provisioning
+    
+#     [server]
+#     domain = ''
+    
+#     [alerting]
+#     enabled = true
+#     # Check interval for alert notifications
+#     check_interval = 1m
+    
+#     [smtp]
+#     enabled = false
+    
+#     [slack]
+#     enabled = true
+#     # URL to your Alertmanager's webhook receiver
+#     api_url = https://hooks.slack.com/services/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
+#     channel = "alerts"
+#     username = Grafana
+
+#   extraConfigMaps:
+#     - name: additional-config-1
+#       mountPath: /etc/grafana/additional-config-1
+#     - name: additional-config-2
+#       mountPath: /etc/grafana/additional-config-2

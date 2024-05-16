@@ -5,8 +5,8 @@ metadata:
   namespace: monitoring
   labels:
     prometheus: main
+    alertmanager: alertmanager-main
 spec:
   replicas: 1
-  alertmanagerConfigSelector:
-    matchLabels:
-      alertmanagerConfig: alertmanager
+  logLevel: debug
+
