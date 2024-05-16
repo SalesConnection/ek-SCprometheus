@@ -15,7 +15,7 @@ spec:
   receivers:
     - name: 'email-alert'
       emailConfigs:
-        - to: 'eklegend02@gamil.com'
+        - to: 'eklegend02@gmail.com'
           from: 'eklegend02@gmail.com'
           smarthost: 'smtp.gmail.com:587'
           authUsername: 'eklegend02@gmail.com'
