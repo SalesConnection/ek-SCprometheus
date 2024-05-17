@@ -1,34 +1,34 @@
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
-metadata:
-  namespace: monitoring
-  name: prometheus-rule
-  labels:
-    prometheus: main
-spec:
-    groups:
-    - name: button_click_alerts
-      rules:
-      - alert: Button1ClickCountAlert
-        expr: button1_clicks_total > 5
-        for: 1m
-        labels:
-          severity: critical
-        annotations:
-          summary: "Button 1 click count exceeded 5"
+# apiVersion: monitoring.coreos.com/v1
+# kind: PrometheusRule
+# metadata:
+#   namespace: monitoring
+#   name: prometheus-rule
+#   labels:
+#     prometheus: main
+# spec:
+#     groups:
+#     - name: button_click_alerts
+#       rules:
+#       - alert: Button1ClickCountAlert
+#         expr: button1_clicks_total > 5
+#         for: 1m
+#         labels:
+#           severity: critical
+#         annotations:
+#           summary: "Button 1 click count exceeded 5"
 
-      - alert: Button2ClickCountAlert
-        expr: button2_clicks_total > 5
-        for: 1m
-        labels:
-          severity: critical
-        annotations:
-          summary: "Button 2 click count exceeded 5"
+#       - alert: Button2ClickCountAlert
+#         expr: button2_clicks_total > 5
+#         for: 1m
+#         labels:
+#           severity: critical
+#         annotations:
+#           summary: "Button 2 click count exceeded 5"
 
-      - alert: Button3ClickCountAlert
-        expr: button3_clicks_total > 5
-        for: 1m
-        labels:
-          severity: critical
-        annotations:
-          summary: "Button 3 click count exceeded 5"
+#       - alert: Button3ClickCountAlert
+#         expr: button3_clicks_total > 5
+#         for: 1m
+#         labels:
+#           severity: critical
+#         annotations:
+#           summary: "Button 3 click count exceeded 5"

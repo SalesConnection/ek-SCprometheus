@@ -1,30 +1,30 @@
-apiVersion: monitoring.coreos.com/v1alpha1
-kind: AlertmanagerConfig
-metadata:
-  name: alertmanager-config
-  namespace: monitoring
-  labels:
-    prometheus: main
-    alertmanager: alertmanager-config
-spec:
-  route:
-    groupBy:
-      - alertname
-    groupWait: 30s
-    groupInterval: 5m
-    repeatInterval: 12h
-    receiver: "slack-notifications"
-    routes:
-      - receiver: "slack-notifications"
-        match:
-          severity: warning
-  receivers:
-    - name: "slack-notifications"
-      slackConfigs:
-        - channel: "#alerts"
-          sendResolved: true
-          apiURL:
-            key: slack-webhook-url
-            name: "slack-secret"
-          text: "alert has been made"
-#https://hooks.slack.com/services/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
+# apiVersion: monitoring.coreos.com/v1alpha1
+# kind: AlertmanagerConfig
+# metadata:
+#   name: alertmanager-config
+#   namespace: monitoring
+#   labels:
+#     prometheus: main
+#     alertmanager: alertmanager-config
+# spec:
+#   route:
+#     groupBy:
+#       - alertname
+#     groupWait: 30s
+#     groupInterval: 5m
+#     repeatInterval: 12h
+#     receiver: "slack-notifications"
+#     routes:
+#       - receiver: "slack-notifications"
+#         match:
+#           severity: warning
+#   receivers:
+#     - name: "slack-notifications"
+#       slackConfigs:
+#         - channel: "#alerts"
+#           sendResolved: true
+#           apiURL:
+#             key: slack-webhook-url
+#             name: "slack-secret"
+#           text: "alert has been made"
+# #https://hooks.slack.com/services/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
